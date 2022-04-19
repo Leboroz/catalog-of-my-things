@@ -20,4 +20,13 @@ Title: #{@title}
 Color: #{@color}
      "
   end
+
+  def to_json
+    {
+      "id" => @id,
+      "title" => @title,
+      "color" => @color,
+      "items" => @items.map { |item|  item.id }
+    }
+  end
 end

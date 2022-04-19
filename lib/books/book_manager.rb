@@ -1,11 +1,15 @@
 require_relative 'book'
+require_relative 'label'
+require "fileutils"
+require 'json'
 
 class BookManager
-  attr_accessor :list_books
+  attr_accessor :list_books, :list_labels
 
   def initialize
     @list_books = []
     @list_labels = []
+    load
   end
 
   def add_label
@@ -51,8 +55,7 @@ class BookManager
     puts "Enter 1 for good and 2 for bad"
     print "opt: "
     cover_state = opt[gets.chomp]
-
-    @list << Book.new(date, archive, publisher, cover_state)
+    @list_books << Book.new(name, date, archive, publisher, cover_state)
     puts "","Book Created!"
   end
 
@@ -62,5 +65,50 @@ class BookManager
 
   def print_labels
     puts @list_labels
+  end
+  
+  def save
+    json = {
+      "books" => @list_books.map { |book| book.to_json },
+      "labels" => @list_labels.map { |label| label.to_json}
+    }
+
+    File.open("books.json", "w") { |f| f.write(JSON.pretty_generate(json)) }
+  end
+
+  def load
+    FileUtils.touch("books.json") unless File.exist?("books.json") 
+    json = File.read("books.json")
+    json = JSON.parse(json)
+    p json
+    @list_books = to_books(json["books"])
+    @list_labels = to_labels(json["labels"])
+  end
+
+  private 
+
+  def to_books(books)
+    books.map do |book| 
+      Book.new(
+        book["name"],
+        book["publish_date"],
+        book["archive"],
+        book["publisher"],
+        book["cover_state"],
+        book["id"]
+      )
+    end
+  end
+
+  def to_labels(labels)
+    labels.map do |label|
+      new_label = Label.new(
+        label["title"],
+        label["color"],
+        label["id"],
+      )
+      label["items"].each { |item| new_label.add_item(item) }
+      new_label
+    end
   end
 end
