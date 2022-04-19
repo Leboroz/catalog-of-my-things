@@ -58,11 +58,3 @@ class MusicManager
     end
   end
 end
-
-music = MusicManager.new
-
-music.genre_menu
-music.album_menu
-
-music.list_genre
-music.list_albums
