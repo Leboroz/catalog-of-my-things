@@ -2,10 +2,13 @@ require_relative '../item'
 require_relative 'author'
 
 class Game < Item
-  def initialize(publish_date, archived, multiplayer, last_played_at)
+  attr_reader :multiplayer, :last_played_at, :name
+
+  def initialize(publish_date, archived, multiplayer, last_played_at, name)
     super(publish_date, archived)
     @multiplayer = multiplayer
     @last_played_at = last_played_at
+    @name = name
   end
 
   def can_be_archived?
