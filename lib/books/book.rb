@@ -23,7 +23,7 @@ cover state: #{@cover_state}
     "
   end
 
-  def to_json
+  def to_json(*_args)
     {
       id: @id,
       name: @name,

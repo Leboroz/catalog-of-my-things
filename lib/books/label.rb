@@ -21,12 +21,12 @@ Color: #{@color}
      "
   end
 
-  def to_json
+  def to_json(*_args)
     {
-      "id" => @id,
-      "title" => @title,
-      "color" => @color,
-      "items" => @items.map { |item|  item.id }
+      'id' => @id,
+      'title' => @title,
+      'color' => @color,
+      'items' => @items.map(&:id)
     }
   end
 end

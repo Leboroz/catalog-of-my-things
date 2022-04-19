@@ -16,4 +16,3 @@ class Game < Item
     parent && diference > 2
   end
 end
-
