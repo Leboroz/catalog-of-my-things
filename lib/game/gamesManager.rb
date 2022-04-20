@@ -1,5 +1,7 @@
 require_relative 'game'
 require_relative 'author'
+require 'fileutils'
+require 'json'
 
 class GamesManager
   def initialize
@@ -46,10 +48,30 @@ class GamesManager
       puts "#{index}\) name: '#{author.first_name << ' ' << author.last_name}'"
     end
   end
+
+  def save_games
+    arr = []
+    @games.each do |game|
+      arr.push({ publish_date: game.publish_date, archived: game.archived, multiplayer: game.multiplayer,
+                 last_played_at: game.last_played_at, name: game.name, id: game.id, author_first: game.author.first_name, author_last: game.author.last_name })
+    end
+    FileUtils.touch('games.json') unless File.exist?('games.json')
+    File.write('games.json', JSON.pretty_generate(arr))
+  end
+
+  def read_games
+    return unless File.exist?('games.json')
+
+    content = JSON.parse(File.read('games.json'))
+    content.each do |data|
+      game = Game.new(data['publish_date'], data['archived'], data['multiplayer'], data['last_played_at'],
+                      data['name'], data['id'])
+      author = Author.new(data['author_first'], data['author_last'])
+      game.author = author
+      author.add_item(game)
+      @games.push(game)
+      @authors.push(author)
+    end
+  end
 end
 
-manager = GamesManager.new
-
-manager.add_game
-manager.list_games
-manager.list_authors
