@@ -79,6 +79,8 @@ class BookManager
   def load
     FileUtils.touch('books.json') unless File.exist?('books.json')
     json = File.read('books.json')
+    return if json == ''
+
     json = JSON.parse(json)
     p json
     @list_books = to_books(json['books'])
@@ -107,7 +109,8 @@ class BookManager
         label['color'],
         label['id']
       )
-      label['items'].each { |item| new_label.add_item(item) }
+      puts new_label
+      label['items'].each { |item| new_label.add_item(@list_books.select { |book| book.id == item }.first) }
       new_label
     end
   end
