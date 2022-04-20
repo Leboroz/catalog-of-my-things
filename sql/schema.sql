@@ -45,7 +45,7 @@ CREATE TABLE book(
 	label_id INT,
 	publish_date DATE,
 	archived BOOLEAN,
-	publicher VARCHAR(80),
+	publisher VARCHAR(80),
 	cover_state VARCHAR(4),
 	FOREIGN KEY(label_id) references author(id) on DELETE
 	SET
@@ -67,7 +67,7 @@ CREATE TABLE book(
 	publish_date DATE,
 	archived BOOLEAN,
 	on_spotify BOOLEAN,
-	FOREIGN KEY(genre_id) references author(id) on DELETE
+	FOREIGN KEY(genre_id) references genre(id) on DELETE
 	SET
 		NULL ON UPDATE CASCADE
 );
