@@ -1,4 +1,4 @@
-require './spec_helper'
+require_relative '../lib/books/label'
 
 describe Label do
   before :each do
