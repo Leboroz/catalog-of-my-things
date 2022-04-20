@@ -74,4 +74,3 @@ class GamesManager
     end
   end
 end
-
