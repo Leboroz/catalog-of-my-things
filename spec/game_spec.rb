@@ -2,7 +2,7 @@ require_relative '../lib/game/game'
 
 describe Game do
   before :each do
-    @game = Game.new('2010-10-10', false, true, '2019-10-10', 'among us')
+    @game = Game.new('among us', '2010-10-10', false, true, '2019-10-10')
     @author = double('author', first_name: 'lisandro', last_name: 'seia')
     @game.author = @author
   end
@@ -21,7 +21,7 @@ describe Game do
 
   context '#can_be_archived' do
     it 'expects can_be_archived to be true' do
-        expect(@game.can_be_archived?).to be(true)
+      expect(@game.can_be_archived?).to be(true)
     end
   end
 end
