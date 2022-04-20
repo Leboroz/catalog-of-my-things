@@ -3,15 +3,9 @@ require 'date'
 class Item
   attr_accessor :id, :publish_date, :archived, :genre, :author, :label, :name
 
-<<<<<<< HEAD
   def initialize(name, publish_date, archived, id = rand(1..1000))
     @name = name
 		@id = id
-=======
-  def initialize( name, publish_date, archived, id = rand(1..1000))
-    @name = name
-    @id = id
->>>>>>> develop
     @publish_date = publish_date
     @archived = archived
   end
