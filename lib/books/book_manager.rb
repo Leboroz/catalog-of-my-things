@@ -36,15 +36,7 @@ class BookManager
 
     puts 'Do you want to archive Yes or no'
     print 'Opt[Y/N]: '
-    archive = gets.chomp.downcase
-
-    case archive
-    when 'y' then archive = true
-    when 'n' then archive = false
-    else
-      puts 'Invalid option'
-      return
-    end
+    archive = gets.chomp.downcase == 'y'
 
     puts 'Enter publisher'
     print 'input: '
