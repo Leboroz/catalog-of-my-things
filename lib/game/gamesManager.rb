@@ -20,7 +20,7 @@ class GamesManager
     multi = gets.chomp.upcase == 'Y'
     puts 'last played at: (YYYY-MM-DD)'
     last = gets.chomp
-    game = Game.new(p_date, archived, multi, last, name)
+    game = Game.new(name, p_date, archived, multi, last)
     author = add_author
     author.add_item(game)
     @games.push(game)
@@ -52,8 +52,8 @@ class GamesManager
   def save_games
     arr = []
     @games.each do |game|
-      arr.push({ publish_date: game.publish_date, archived: game.archived, multiplayer: game.multiplayer,
-                 last_played_at: game.last_played_at, name: game.name, id: game.id, author_first: game.author.first_name, author_last: game.author.last_name })
+      arr.push({ name: game.name, publish_date: game.publish_date, archived: game.archived, multiplayer: game.multiplayer,
+                 last_played_at: game.last_played_at, id: game.id, author_first: game.author.first_name, author_last: game.author.last_name })
     end
     FileUtils.touch('games.json') unless File.exist?('games.json')
     File.write('games.json', JSON.pretty_generate(arr))
@@ -64,8 +64,7 @@ class GamesManager
 
     content = JSON.parse(File.read('games.json'))
     content.each do |data|
-      game = Game.new(data['publish_date'], data['archived'], data['multiplayer'], data['last_played_at'],
-                      data['name'], data['id'])
+      game = Game.new(data['name'], data['publish_date'], data['archived'], data['multiplayer'], data['last_played_at'], data['id'])
       author = Author.new(data['author_first'], data['author_last'])
       game.author = author
       author.add_item(game)
