@@ -62,47 +62,27 @@ class MusicManager
     end
   end
 
-	def to_album(albums)
-		albums.map do |item|
-			MusicAlbum.new(
-				item['name'],
-				item['published'],
-				item['archived'],
-				item['spotify'],
-				item['id']
-			)
-		end
-	end
-
-	def to_genre(genre)
-		genre.map do |item|
-			new_genre = Genre.new(
-				item['name'],
-				item['id']
-			)
-			item['items'].each {|e| new_genre.add_item(@list_album.select { |item| item == e})}
-		end
-	end
-
 	def write_json
-		json = {
-			'albums' => @list_album.map(&:to_json),
-			'genre' => @list_genre.map(&:to_json)
-		}
-		File.write('music.json', JSON.pretty_generate(json))
+		arr = []
+		@list_album.each do |album|
+			arr.push({name: album.name, genre: album.genre.name, published: album.publish_date,
+				archived: album.archived, spotify: album.on_spotify, id: album.id})
+		end
+		FileUtils.touch('music.json') unless File.exist?('music.json')
+		File.write('music.json', JSON.pretty_generate(arr))
 	end
 
 	def load_json
-		Fileutiles.touch('music.json') unless File.exist?('music.json')
-			json = File.read('music.json')
-			json = JSON.parse(json)
-			@list_album = to_album(json['albums'])
-			@list_genre = to_genre(json['genre'])
+		return unless File.exist?('music.json')
+		file = JSON.parse(File.read('music.json'))
+		file.each do |data|
+			album = MusicAlbum.new(data['name'], data['published'], data['archived'],
+				data['spotify'], data['id'])
+				genre = Genre.new(data['genre'])
+				album.genre = genre
+				genre.add_item(album)
+				@list_album.push(album)
+				@list_genre.push(genre)
+		end
 	end
 end
-
-music = MusicManager.new
-music.load_json
-
-
-
