@@ -25,11 +25,11 @@ class MusicAlbum < Item
 
 	def to_json(*_args)
 		{
-			'id' => @id,
-			'name' => @name,
-			'published' => @publish_date,
-			'archived' => @archived,
-			'spotify' => @on_spotify
+			id:  @id,
+			name: @name,
+			published: @publish_date,
+			archived: @archived,
+			spotify: @on_spotify
 		}
 	end
 

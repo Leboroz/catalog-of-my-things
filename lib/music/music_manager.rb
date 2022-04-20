@@ -50,13 +50,13 @@ class MusicManager
     @list_album << album
   end
 
-  def list_genre
+  def print_genres
     @list_genre.each do |genre|
-      puts "ID: #{genre.id}-) genre: #{genre.name}"
+      puts "ID: #{genre.id}-) genre: #{genre.name} items: #{genre.items}"
     end
   end
 
-  def list_albums
+  def print_albums
     @list_album.each do |album|
       puts "ID: #{album.id}-) album name: #{album.name} publication date: #{album.publish_date} "
     end
@@ -80,8 +80,7 @@ class MusicManager
 				item['name'],
 				item['id']
 			)
-			item['items']. each {|e| new_genre.add_item(e)}
-			new_genre
+			item['items'].each {|e| new_genre.add_item(@list_album.select { |item| item == e})}
 		end
 	end
 
@@ -103,6 +102,7 @@ class MusicManager
 end
 
 music = MusicManager.new
+music.load_json
 
-music.album_menu
-music.write_json
+
+
