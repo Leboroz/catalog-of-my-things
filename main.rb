@@ -1,8 +1,9 @@
-require_relative '../lib/app'
+require_relative './lib/app'
 
 class Main
   def start
-    puts 'Welcome to School Library!'
+    puts 'Welcome to Catalog of my things!'
+			app = App.new
     loop do
       puts "Please choose an option by entering a number
 1-List all books
@@ -16,10 +17,20 @@ class Main
 9-Add a game
 10-Exit"
       num = gets.chomp.to_i
-			app = App.new
-			app.main_menu(num)
       break if num == 10
+			app.main_menu(num)
+      puts '', 'Press enter to continue'
+      gets.chomp
+      clear
     end
+    puts "Thanks for using this app!"
+    gets.chomp
+    clear
+  end
+
+  def clear
+    system "cls"
+    system "clear"
   end
 end
 

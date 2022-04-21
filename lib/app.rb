@@ -4,7 +4,7 @@ require_relative './music/music_manager'
 
 class App
 	def initialize
-		@books_manager = BookManager.new
+		@book_manager = BookManager.new
 		@game_manager = GamesManager.new
 		@music_manager = MusicManager.new
 	end
@@ -20,7 +20,8 @@ class App
 		when 7 then @book_manager.add_book
 		when 8 then @music_manager.album_menu
 		when 9 then @game_manager.add_game
-	end
+	  end
+  end
 end
 
 
