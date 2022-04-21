@@ -1,3 +1,5 @@
+require_relative '../lib/app'
+
 class Main
   def start
     puts 'Welcome to School Library!'
@@ -14,6 +16,8 @@ class Main
 9-Add a game
 10-Exit"
       num = gets.chomp.to_i
+			app = App.new
+			app.main_menu(num)
       break if num == 10
     end
   end
