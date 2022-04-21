@@ -10,6 +10,7 @@ class MusicManager
   def initialize
     @list_genre = []
     @list_album = []
+		load_json
   end
 
   def validated_boolean(option)

@@ -7,6 +7,7 @@ class GamesManager
   def initialize
     @games = []
     @authors = []
+		read_games
   end
 
   def add_game
