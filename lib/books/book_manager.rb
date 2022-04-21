@@ -13,7 +13,7 @@ class BookManager
   end
 
   def add_label
-    puts 'Input title'
+    puts 'Create a Label', 'Input title'
     print 'Title: '
     title = gets.chomp
 
@@ -31,7 +31,7 @@ class BookManager
     name = gets.chomp.strip
 
     puts 'Enter date of publish'
-    print 'date: '
+    print 'date(YYYY-MM-DD): '
     date = gets.chomp
 
     puts 'Do you want to archive Yes or no'
@@ -41,14 +41,13 @@ class BookManager
     puts 'Enter publisher'
     print 'input: '
     publisher = gets.chomp.strip
-
     opt = { '1': 'good', '2': 'bad' }
-
     puts 'Enter 1 for good and 2 for bad'
     print 'opt: '
     cover_state = opt[gets.chomp]
     @list_books << Book.new(name, date, archive, publisher, cover_state)
-    puts '', 'Book Created!'
+    puts '', 'Book Created!', ''
+    add_label
   end
 
   def print_books
