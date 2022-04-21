@@ -76,18 +76,18 @@ $ rspec
 ## Authors
 👤 **Lisandro Seia**
 
- **GitHub**   [@lisandroseia](https://github.com/lisandroseia)
- **LinkdIn**  [LinkedIn](https://www.linkedin.com/in/lisandro-seia-295120225/)
+- **GitHub**   [@lisandroseia](https://github.com/lisandroseia)
+- **LinkdIn**  [LinkedIn](https://www.linkedin.com/in/lisandro-seia-295120225/)
 
  👤 **Leonardo Albornoz** 
- **GitHub** [@Leboroz](https://github.com/leboroz) 
- **Twitter** [@Leboroz](https://twitter.com/leboroz)
- **LinkedIn** [Leonardo Albornoz](https://linkedin.com/in/leboroz)
+- **GitHub** [@Leboroz](https://github.com/leboroz) 
+- **Twitter** [@Leboroz](https://twitter.com/leboroz)
+- **LinkedIn** [Leonardo Albornoz](https://linkedin.com/in/leboroz)
 
 👤 **Nicolas Gonzalez**
 
- **GitHub**   [@Nicolaswg](https://github.com/Nicolaswg)                          
- **LinkdIn**  [LinkedIn](https://www.linkedin.com/in/nicolas-gonzalez-8623461a0/) 
+- **GitHub**   [@Nicolaswg](https://github.com/Nicolaswg)                          
+- **LinkdIn**  [LinkedIn](https://www.linkedin.com/in/nicolas-gonzalez-8623461a0/) 
 
 ## 🤝 Contributing
 
