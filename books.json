@@ -1,0 +1,22 @@
+{
+  "books": [
+    {
+      "id": 399,
+      "name": "as",
+      "publish_date": "2020-10-10",
+      "archive": true,
+      "publisher": "li",
+      "cover_state": null
+    }
+  ],
+  "labels": [
+    {
+      "id": 227,
+      "title": "li",
+      "color": "02",
+      "items": [
+
+      ]
+    }
+  ]
+}
