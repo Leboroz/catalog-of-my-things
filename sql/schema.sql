@@ -60,7 +60,7 @@ CREATE TABLE label(
 );
 
 /* init table for Music album*/
-CREATE TABLE book(
+CREATE TABLE album(
 	id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	name VARCHAR(100),
 	genre_id INT,
