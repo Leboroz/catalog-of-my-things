@@ -5,7 +5,7 @@ class Item
 
   def initialize(name, publish_date, archived, id = rand(1..1000))
     @name = name
-		@id = id
+    @id = id
     @publish_date = publish_date
     @archived = archived
   end

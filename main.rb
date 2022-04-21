@@ -1,11 +1,7 @@
 require_relative './lib/app'
 
 class Main
-  def start
-    puts 'Welcome to Catalog of my things!'
-    app = App.new
-    loop do
-      puts "Please choose an option by entering a number
+  MENU = "Please choose an option by entering a number
 1-List all books
 2-List all music albums
 3-List of games
@@ -15,7 +11,13 @@ class Main
 7-Add a book
 8-Add a music album
 9-Add a game
-10-Exit"
+10-Exit".freeze
+
+  def start
+    puts 'Welcome to Catalog of my things!'
+    app = App.new
+    loop do
+      puts MENU
       num = gets.chomp.to_i
       app.main_menu(num)
       break if num == 10

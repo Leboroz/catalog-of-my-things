@@ -1,5 +1,5 @@
 require_relative './books/book_manager'
-require_relative './game/gamesManager'
+require_relative './game/games_manager'
 require_relative './music/music_manager'
 
 class App
@@ -20,13 +20,13 @@ class App
     when 7 then @book_manager.add_book
     when 8 then @music_manager.album_menu
     when 9 then @game_manager.add_game
-	when 10 then save
+    when 10 then save
     end
   end
 
   def save
-	@book_manager.save
-	@game_manager.save_games
-	@music_manager.write_json
+    @book_manager.save
+    @game_manager.save_games
+    @music_manager.write_json
   end
 end

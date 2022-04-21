@@ -34,6 +34,3 @@ cover state: #{@cover_state}
     }
   end
 end
-
-
-book = Book.new('HP', '2015-03-22', true, 'lp', 'good', 1)
