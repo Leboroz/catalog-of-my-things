@@ -25,8 +25,7 @@ class MusicManager
   end
 
 	def genre_menu
-    puts "Add a new Music Album\n\n"
-    puts 'Album genre name:'
+    puts 'Add album genre:'
     genre_name = gets.chomp
     genre = Genre.new(genre_name)
     @list_genre << genre
@@ -53,7 +52,7 @@ class MusicManager
 
   def print_genres
     @list_genre.each do |genre|
-      puts "ID: #{genre.id}-) genre: #{genre.name} items: #{genre.items}"
+      puts "ID: #{genre.id}-) genre: #{genre.name}"
     end
   end
 
