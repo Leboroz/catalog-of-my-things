@@ -4,18 +4,11 @@ describe MusicAlbum do
   before(:each) do
     @album = MusicAlbum.new('lupita', '1998-09-09', true, true)
     @genre = double('genre', name: 'Rock')
-    @album.genre = @genre
   end
 
   context 'Be an instance of MusicAlbum class' do
     it '#new' do
       expect(@album).to be_instance_of(MusicAlbum)
-    end
-  end
-
-  context 'Check genre values' do
-    it '#new' do
-      expect(@album.genre.name).to eq('Rock')
     end
   end
 
