@@ -11,9 +11,9 @@ tables structure analogical to your program's class structure.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- Ruby
+- Rspec, Rspec utils
+- Git, Gitflow
 
 ## Getting Started
 
